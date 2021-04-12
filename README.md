@@ -33,13 +33,13 @@ New-PACertificate -Domain sts.example.com -AcceptTOS -Contact me@example.com -Dn
 $MainDomain = 'www.example.com'
 
 # the '-UseExisting' flag is useful when the certifcate is not yet expired
-./Update-IISLECert.ps1 -MainDomain $MainDomain -UseExisting
+./Update-PRTGLECert.ps1 -MainDomain $MainDomain -UseExisting
 ```
 ### Normal Use
 To normally run it:
 
 ```powershell
-./Update-IISLECert.ps1 -MainDomain $MainDomain
+./Update-PRTGLECert.ps1 -MainDomain $MainDomain
 ```
 
 ### Force Renewals
@@ -47,7 +47,7 @@ To normally run it:
 You can force a renewal with the '-ForceRenew' switch:
 
 ```powershell
-./Update-IISLECert.ps1 -MainDomain $MainDomain -ForceRenew
+./Update-PRTGLECert.ps1 -MainDomain $MainDomain -ForceRenew
 ```
 ### Other Notes
 
