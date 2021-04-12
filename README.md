@@ -30,7 +30,7 @@ The script is designed to handle the renewals automatically, so you need to requ
 New-PACertificate -Domain sts.example.com -AcceptTOS -Contact me@example.com -DnsPlugin Cloudflare -PluginArgs @{CFAuthEmail="me@example.com";CFAuthKey='xxx'}
 
 # After the above completes, run the following
-$MainDomain = 'www.example.com'
+$MainDomain = 'prtg.example.com'
 
 # the '-UseExisting' flag is useful when the certifcate is not yet expired
 ./Update-PRTGLECert.ps1 -MainDomain $MainDomain -UseExisting
@@ -61,6 +61,8 @@ This script is set to automatically log the process and create a persistent log 
 
 ### PRTG-LetsEncrypt-Renewal.xml
 
+To use the provided Task Scheduler XML file, you will need to create the folder in C:\Scripts and place the file Update-PRTGCert.ps1 inside it.  If you choose to locate the Update-PRTGCert.ps1 file elsewhere, then modify the scheduled task location 'Start in'.
+
 This XML file is a sample scheduled task that can be imported into the Windows Task Scheduler to handle the automatic renewal process.  There are a few modifications that will need to be made following the import:
 - General Tab
     - Change User or Group
@@ -70,7 +72,7 @@ This XML file is a sample scheduled task that can be imported into the Windows T
 - Actions
     - Edit Task
         - Add arguments
-            - Change sts.example.com to FQDN of ADFS server
+            - Change prtg.example.com to FQDN of PRTG server
         - Start in
             - Replace with path of actual location of the script
 
