@@ -36,20 +36,36 @@ $MainDomain = 'prtg.example.com'
 ./Update-PRTGLECert.ps1 -MainDomain $MainDomain -UseExisting
 ```
 ### Normal Use
-To normally run it:
+To normally run it with the '-MainDomain' parameter:
 
 ```powershell
 ./Update-PRTGLECert.ps1 -MainDomain $MainDomain
 ```
+or run it without the '-MainDoman' parameter:
+```powershell
+./Update-PRTGLECert.ps1
+```
 
 ### Force Renewals
 
-You can force a renewal with the '-ForceRenew' switch:
+You can force a renewal with the '-ForceRenew' switch and with the '-MainDomain' parameter:
 
 ```powershell
 ./Update-PRTGLECert.ps1 -MainDomain $MainDomain -ForceRenew
 ```
+or you can force a renewal with the '-ForceRenew' switch and without the '-MainDomain' parameter:
+```powershell
+./Update-PRTGLECert.ps1 -ForceRenew
+```
 ### Other Notes
+
+#### Single Posh-ACME account required on the server
+
+This script makes the assumption that there will only be one Posh-ACME account installed on the server.  If for some reason more than one account exists, then the logic will break and the script will not complete.  If more than one Posh-ACME account exists, please manually remove non-relevant accounts until only a single Posh-ACME account directory exists on the system.
+
+#### MainDomain option parameter
+
+The '-MainDomain' parameter is optional.  The script will parse the directory to determine FQDN and the Posh-ACME account number and version.  If '-Main Domain' is included, then a consistency check is performed to verify the FQDN matches the value provided.
 
 #### Switch Mutual Exclusivity
 
